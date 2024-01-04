@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="match"
+            type="com.worldcup.almondial.database.entities.MatchEntity" />
+
+        <variable
+            name="clickListener"
+            type="com.worldcup.almondial.ui_.home_screen.MatchAdapter.MatchListener" />
+    </data>
+
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_16dp"
+    app:cardCornerRadius="@dimen/dimen_8dp"
+    app:cardElevation="@dimen/dimen_4dp"
+    android:onClick="@{() -> clickListener.onClick(match)}">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTeamHomeName"
+            app:layout_constraintEnd_toEndOf="@+id/tvTeamHomeName"
+            app:layout_constraintStart_toStartOf="@+id/tvTeamHomeName"
+            tools:srcCompat="@drawable/arg"
+            app:TeamLogo="@{match.team1name}"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTeamAwayName"
+            app:layout_constraintEnd_toEndOf="@+id/tvTeamAwayName"
+            app:layout_constraintStart_toStartOf="@+id/tvTeamAwayName"
+            tools:srcCompat="@drawable/frn"
+            app:TeamLogo="@{match.team2name}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/Stage"
+            style="@style/MatchItem_BIGTEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{match.stage}"
+            tools:text="GROUP A"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/Match_Date"
+            style="@style/MatchItem_BIGTEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="@{match.date}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_text_12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/match_Date2"
+            app:layout_constraintEnd_toStartOf="@+id/match_Date2"
+            tools:text="16-2-2022" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/match_Date"
+            style="@style/MatchItem_BIGTEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="@{match.time}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_text_12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/match_Date2"
+            app:layout_constraintStart_toEndOf="@+id/match_Date2"
+            tools:text="6:00 PM" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/match_Date2"
+            style="@style/MatchItem_BIGTEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="|"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_text_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Stage"
+            tools:text="|" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSeparation"
+            style="@style/BaseTextView.Bold"
+
+            android:fontFamily="@font/roboto_light"
+            android:text="@{match.score}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_text_16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvTeamAwayName"
+            app:layout_constraintStart_toEndOf="@+id/tvTeamHomeName"
+            app:layout_constraintTop_toBottomOf="@+id/Match_Date"
+            tools:text="2   -  2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTeamHomeName"
+            style="@style/MatchItem_BIGTEXT"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:gravity="center"
+            android:text="@{match.team1name}"
+            tools:text="Argentina"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match_Date" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTeamAwayName"
+            style="@style/MatchItem_BIGTEXT"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:gravity="center"
+            android:text="@{match.team2name}"
+            tools:text="France"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match_Date" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
+</layout>

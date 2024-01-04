@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui_.home_screen.HomeScreenFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <!--    <include-->
+        <!--        layout="@layout/layout_toolbar_main"-->
+        <!--        android:background="#56042C" />-->
+
+        <!--    <ProgressBar-->
+        <!--        android:id="@+id/pbLeague"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_centerInParent="true" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/containerHeader"
+                android:contentDescription="@string/app_name"
+                android:fillViewport="true"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/HomeScreenList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_match" />
+
+            </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/containerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginHorizontal="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:padding="@dimen/dimen_4dp"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:cardElevation="@dimen/dimen_6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#39011C">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgHome"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:tint="#FFFFFF"
+                    app:srcCompat="@drawable/logo_text" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</layout>

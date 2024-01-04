@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="match"
+            type="com.worldcup.almondial.database.entities.MatchEntity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgLeague"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/footballground" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/containerHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgLeague"
+                android:layout_marginHorizontal="@dimen/dimen_20dp"
+                android:layout_marginTop="-30dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_8dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSeparation"
+                        style="@style/BaseTextView.Bold"
+                        android:text="@{match.score}"
+                        android:textColor="@color/colorGrey2"
+                        android:textSize="@dimen/dimen_text_16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvTeamAwayName"
+                        app:layout_constraintStart_toEndOf="@+id/tvTeamHomeName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2 - 1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTeamHomeName"
+                        style="@style/BaseTextView.Bold"
+                        android:layout_width="85dp"
+                        android:layout_marginVertical="@dimen/dimen_25dp"
+                        android:layout_marginStart="@dimen/dimen_16dp"
+                        android:gravity="center"
+                        android:text="@{match.team1name}"
+                        android:textColor="@color/colorGrey2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Argentina" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTeamAwayName"
+                        style="@style/BaseTextView.Bold"
+                        android:layout_width="85dp"
+                        android:layout_marginVertical="@dimen/dimen_25dp"
+                        android:layout_marginEnd="@dimen/dimen_16dp"
+                        android:gravity="center"
+                        android:text="@{match.team2name}"
+                        android:textColor="@color/colorGrey2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="France" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgTeamHome"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="@dimen/dimen_80dp"
+                android:layout_below="@id/containerHeader"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:src="@drawable/arg"
+                app:TeamLogo="@{match.team1name}"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgTeamAway"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="@dimen/dimen_80dp"
+                android:layout_below="@id/containerHeader"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                tools:src="@drawable/frn"
+                app:TeamLogo="@{match.team2name}"/>
+
+            <TextView
+                android:id="@+id/tvMatchName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/containerHeader"
+                android:layout_marginTop="@dimen/dimen_40dp"
+                android:layout_toEndOf="@+id/imgTeamHome"
+                android:gravity="center"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/dimen_text_16sp"
+                android:textStyle="bold"
+                tools:text="Argentina"
+                android:text="@{match.team1name}"/>
+
+            <TextView
+                android:id="@+id/tvMatchName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/containerHeader"
+                android:layout_marginTop="@dimen/dimen_40dp"
+                android:layout_toStartOf="@+id/imgTeamAway"
+                android:gravity="center"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/dimen_text_16sp"
+                android:textStyle="bold"
+                tools:text="France"
+                android:text="@{match.team2name}"/>
+
+            <TextView
+                android:id="@+id/Match_Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMatchName"
+                android:layout_toStartOf="@+id/imgTeamAway"
+                android:layout_toEndOf="@+id/imgTeamHome"
+                android:gravity="center"
+                android:textColor="@color/colorTextPrimary"
+                tools:text="14/10"
+                android:text="@{match.date}"/>
+
+            <TextView
+                android:id="@+id/match_Date5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Match_Date"
+                android:layout_toStartOf="@+id/imgTeamAway"
+                android:layout_toEndOf="@+id/imgTeamHome"
+                android:gravity="center"
+                android:textColor="@color/colorTextPrimary"
+                tools:text="6:00 PM"
+                android:text="@{match.time}"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_stadium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/match_Date5"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <TextView
+                        android:id="@+id/tvTeamName51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/tvTeamName31"
+                        tools:text="Cairo Stadium"
+                        android:text="@{match.stadium}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTeamName31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@id/imgTeam"
+                        android:text="Stadium :"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_referee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_view_stadium"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <TextView
+                        android:id="@+id/tvTeamName50000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/tvTeamName30000"
+                        android:text="@{match.referee}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="Ahmed" />
+
+                    <TextView
+                        android:id="@+id/tvTeamName30000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@id/imgTeam"
+                        android:text="Referee :"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_views_stage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_view_referee"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/dimen_16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardElevation="@dimen/dimen_4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <TextView
+                        android:id="@+id/tvTeamName5000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/tvTeamName3000"
+                        android:text="@{match.stage}"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="Groups" />
+
+                    <TextView
+                        android:id="@+id/tvTeamName3000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@id/imgTeam"
+                        android:text="Stage :"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
+</layout>
